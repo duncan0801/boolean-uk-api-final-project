@@ -29,14 +29,14 @@ model Team {
   badgeUrl String
   leagueId Int
   league  League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
-  menager Menager? 
+  manager Manager? 
   players Player[]
   awayFixtures Fixture[] @relation("homeTeam")
   homeFixtures Fixture[] @relation("awayTeam")
 
 }
 
-model Menager {
+model Manager {
   id  Int @id @default(autoincrement())
   firstName String
   lastName String
