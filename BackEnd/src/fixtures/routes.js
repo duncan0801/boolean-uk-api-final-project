@@ -1,13 +1,21 @@
-const fixtureRouter = require("express").Router()
+const fixtureRouter = require("express").Router();
 
-fixtureRouter.get("/", ()=>{})
+const {
+  getAllFixtures,
+  getFixtureById,
+  createNewFixture,
+  updatedFixture,
+  deleteFixtureById,
+} = require("./controller");
 
-fixtureRouter.get("/:id", ()=>{})
+fixtureRouter.get("/", getAllFixtures);
 
-fixtureRouter.post("/", ()=>{})
+fixtureRouter.get("/:id", getFixtureById);
 
-fixtureRouter.patch("/:id", ()=>{})
+fixtureRouter.post("/", createNewFixture);
 
-fixtureRouter.delete("/:id", ()=>{})
+fixtureRouter.patch("/:id", updatedFixture);
 
-module.exports = fixtureRouter
+fixtureRouter.delete("/:id", deleteFixtureById);
+
+module.exports = fixtureRouter;

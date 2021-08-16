@@ -1,13 +1,21 @@
-const managerRouter = require("express").Router()
+const managerRouter = require("express").Router();
 
-managerRouter.get("/", ()=>{})
+const {
+  getAllManagers,
+  getManagerById,
+  createNewManager,
+  updatedManager,
+  deleteManagerById,
+} = require("./controller");
 
-managerRouter.get("/:id", ()=>{})
+managerRouter.get("/", getAllManagers);
 
-managerRouter.post("/", ()=>{})
+managerRouter.get("/:id", getManagerById);
 
-managerRouter.patch("/:id", ()=>{})
+managerRouter.post("/", createNewManager);
 
-managerRouter.delete("/:id", ()=>{})
+managerRouter.patch("/:id", updatedManager);
 
-module.exports = managerRouter
+managerRouter.delete("/:id", deleteManagerById);
+
+module.exports = managerRouter;
