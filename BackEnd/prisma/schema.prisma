@@ -4,8 +4,68 @@
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
+}
+
+model League {
+ id  Int @id @default(autoincrement())
+ name String
+ country String
+ numberOfTeams Int
+ imageUrl String
+ teams Team[]
+}
+
+model Team {
+  id  Int @id @default(autoincrement())
+  name String
+  stadium String
+  yearFormed Int
+  badgeUrl String
+  leagueId Int
+  league  League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  manager Manager? 
+  players Player[]
+  awayFixtures Fixture[] @relation("homeTeam")
+  homeFixtures Fixture[] @relation("awayTeam")
+
+}
+
+model Manager {
+  id  Int @id @default(autoincrement())
+  firstName String
+  lastName String
+  age Int
+  previousTeams String
+  imageUrl String
+  teamId Int
+  team    Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+}
+
+model Player {
+  id  Int @id @default(autoincrement())
+  firstName String
+  lastName String
+  height Float
+  shirtNo Int
+  nationality String
+  weight Float
+  position String
+  imageUrl String
+  teamId Int
+  team  Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+}
+
+model Fixture{
+  id  Int @id @default(autoincrement())
+  date DateTime
+  homeTeamId Int
+  homeTeam Team @relation("homeTeam", fields: [homeTeamId], references: [id], onDelete: Cascade)
+  awayTeamId Int
+  awayTeam Team @relation("awayTeam", fields: [awayTeamId], references: [id], onDelete: Cascade)
 }
