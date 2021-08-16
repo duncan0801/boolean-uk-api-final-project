@@ -41,7 +41,7 @@ model Manager {
   firstName String
   lastName String
   age Int
-  previousTeams String
+  previousTeams String[]
   imageUrl String
   teamId Int
   team    Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
