@@ -1,6 +1,17 @@
 const { team } = require("../../utils/dbClient");
 
 const getAllTeams = async (req, res) => {
+  const teamName = req.query.name;
+
+  if (teamName) {
+    try {
+      const oneTeam = await team.findUnique({ where: { name: teamName } });
+      res.json({ data: oneTeam });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+    return;
+  }
   try {
     const allTeams = await team.findMany();
     res.json({ data: allTeams });

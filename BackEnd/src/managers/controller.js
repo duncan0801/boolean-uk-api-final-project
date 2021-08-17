@@ -1,6 +1,32 @@
-const { manager } = require("../../utils/dbClient");
+const { manager, team } = require("../../utils/dbClient");
 
 const getAllManagers = async (req, res) => {
+  const name = req.query.name;
+  const teamName = req.query.team;
+  if (name) {
+    try {
+      const allManagers = await manager.findMany({
+        where: { firstName: name },
+      });
+      res.json({ data: allManagers });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+    return;
+  }
+  if (teamName) {
+    try {
+      const allManagers = await team.findUnique({
+        where: { name: teamName },
+        include: { manager: true },
+      });
+      res.json({ data: allManagers.managers });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+    return;
+  }
+
   try {
     const allManagers = await manager.findMany();
     res.json({ data: allManagers });

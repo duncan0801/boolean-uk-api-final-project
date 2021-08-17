@@ -1,6 +1,30 @@
-const { player } = require("../../utils/dbClient");
+const { player, team } = require("../../utils/dbClient");
 
 const getAllPlayers = async (req, res) => {
+  const name = req.query.name;
+  const teamName = req.query.team;
+  if (name) {
+    try {
+      const allPlayers = await player.findMany({ where: { firstName: name } });
+      res.json({ data: allPlayers });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+    return;
+  }
+  if (teamName) {
+    try {
+      const allPlayers = await team.findUnique({
+        where: { name: teamName },
+        include: { players: true },
+      });
+      res.json({ data: allPlayers.players });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+    return;
+  }
+
   try {
     const allPlayers = await player.findMany();
     res.json({ data: allPlayers });
@@ -61,6 +85,37 @@ const deletePlayerById = async (req, res) => {
     res.json({ error: error.message });
   }
 };
+
+// const getPlayerByName = async (req, res) => {
+//   const firstName = req.params.firstName;
+//   //   const lastName = req.params.lastName;
+
+//   try {
+//     const playerByName = await player.findMany({
+//       where: {
+//         firstName,
+//       },
+//     });
+//     res.json({ data: playerByName });
+//   } catch (error) {
+//     res.json({ error: error.message });
+//   }
+// };
+
+// const getPlayerByTeam = async (req, res) => {
+//   const team = req.params.team;
+
+//   try {
+//     const playerByTeam = await player.findMany({
+//       where: {
+//         team,
+//       },
+//     });
+//     res.json({ data: playerByTeam });
+//   } catch (error) {
+//     res.json({ error: error.message });
+//   }
+// };
 
 module.exports = {
   getAllPlayers,
