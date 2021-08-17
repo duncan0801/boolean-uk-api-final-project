@@ -28,7 +28,7 @@ model Team {
   yearFormed Int
   badgeUrl String
   leagueId Int
-  league  League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  league  League @relation(fields: [leagueId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   manager Manager? 
   players Player[]
   awayFixtures Fixture[] @relation("homeTeam")
@@ -44,7 +44,7 @@ model Manager {
   previousTeams String[]
   imageUrl String
   teamId Int
-  team    Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  team    Team   @relation(fields: [teamId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Player {
@@ -58,14 +58,15 @@ model Player {
   position String
   imageUrl String
   teamId Int
-  team  Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  team  Team @relation(fields: [teamId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Fixture{
   id  Int @id @default(autoincrement())
   date DateTime
   homeTeamId Int
-  homeTeam Team @relation("homeTeam", fields: [homeTeamId], references: [id], onDelete: Cascade)
   awayTeamId Int
-  awayTeam Team @relation("awayTeam", fields: [awayTeamId], references: [id], onDelete: Cascade)
+  result String?
+  homeTeam Team @relation("homeTeam", fields: [homeTeamId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  awayTeam Team @relation("awayTeam", fields: [awayTeamId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
