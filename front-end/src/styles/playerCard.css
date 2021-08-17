@@ -1,0 +1,8 @@
+.card {
+  outline: 1px solid var(--black);
+  border-radius: 10px;
+}
+
+.imageContainer {
+  width: 80%;
+}
