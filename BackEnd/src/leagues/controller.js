@@ -1,6 +1,20 @@
 const { league } = require("../../utils/dbClient");
 
 const getAllLeagues = async (req, res) => {
+  const leagueName = req.query.name;
+
+  if (leagueName) {
+    try {
+      const oneLeague = await league.findUnique({
+        where: { name: leagueName },
+      });
+      res.json({ data: oneLeague });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+    return;
+  }
+
   try {
     const allLeagues = await league.findMany();
     res.json({ data: allLeagues });
