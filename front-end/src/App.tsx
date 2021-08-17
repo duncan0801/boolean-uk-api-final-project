@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import PlayerCard from "./components/PlayerCard";
 import {
   FormControl,
   Select,
@@ -10,6 +9,7 @@ import {
 } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
 import "./App.css";
+import PlayerCardSmall from "./components/PlayerCardSmall";
 
 // const theme = createTheme({
 //   typography: {
@@ -50,40 +50,50 @@ function App() {
       </header>
       <main>
         <div className="viewSection">
-          <FormControl variant="outlined" className="form">
-            <Grid
-              container
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-              style={{ minWidth: "100vw" }}
-            >
-              <InputLabel id="filterChoiceLabel">Search...</InputLabel>
-              <Select
-                labelId="filterChoiceLabel"
-                id="filterChoice"
-                value={10}
-                label="filter"
-                fullWidth
-              >
-                <MenuItem value={"leagues"}>Leagues</MenuItem>
-                <MenuItem value={"players"}>Players</MenuItem>
-                <MenuItem value={"managers"}>Managers</MenuItem>
-                <MenuItem value={"teams"}>Teams</MenuItem>
-                <MenuItem value={"fixtures"}>Fixtures</MenuItem>
-              </Select>
-              <SearchBar
-                onChange={() => console.log("onChange")}
-                onRequestSearch={() => console.log("onRequestSearch")}
-                style={{
-                  margin: "0 auto",
-                }}
-              />
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+            style={{ minWidth: "100vw" }}
+          >
+            <Grid item>
+              <FormControl variant="outlined" className="form">
+                <Select
+                  placeholder="Select A Filter"
+                  labelId="filterChoiceLabel"
+                  id="filterChoice"
+                  value={10}
+                  label="Select A Filter"
+                  style={{ width: 150 }}
+                >
+                  <MenuItem value="">
+                    <em>Select A Filter</em>
+                  </MenuItem>
+                  <MenuItem value={"leagues"}>Leagues</MenuItem>
+                  <MenuItem value={"players"}>Players</MenuItem>
+                  <MenuItem value={"managers"}>Managers</MenuItem>
+                  <MenuItem value={"teams"}>Teams</MenuItem>
+                  <MenuItem value={"fixtures"}>Fixtures</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
-          </FormControl>
+            <Grid item>
+              <FormControl>
+                <SearchBar
+                  onChange={() => console.log("onChange")}
+                  onRequestSearch={() => console.log("onRequestSearch")}
+                  style={{
+                    margin: "0 auto",
+                  }}
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
+
           <Grid container className="infoSection">
             <Grid item>
-              <PlayerCard/>
+              <PlayerCardSmall />
             </Grid>
           </Grid>
         </div>
