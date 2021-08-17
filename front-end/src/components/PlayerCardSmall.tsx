@@ -1,6 +1,6 @@
 import "../styles/playerCard.css";
 
-function PlayerCard() {
+function PlayerCardSmall() {
   return (
     <a href="#"> 
       <div className="card">
@@ -16,4 +16,4 @@ function PlayerCard() {
   );
 }
 
-export default PlayerCard;
+export default PlayerCardSmall;
