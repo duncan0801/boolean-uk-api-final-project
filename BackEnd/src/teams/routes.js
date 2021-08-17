@@ -1,13 +1,21 @@
-const teamRouter = require("express").Router()
+const teamRouter = require("express").Router();
 
-teamRouter.get("/", ()=>{})
+const {
+  getAllTeams,
+  getTeamById,
+  createNewTeam,
+  updatedTeam,
+  deleteTeamById,
+} = require("./controller");
 
-teamRouter.get("/:id", ()=>{})
+teamRouter.get("/", getAllTeams);
 
-teamRouter.post("/", ()=>{})
+teamRouter.get("/:id", getTeamById);
 
-teamRouter.patch("/:id", ()=>{})
+teamRouter.post("/", createNewTeam);
 
-teamRouter.delete("/:id", ()=>{})
+teamRouter.patch("/:id", updatedTeam);
 
-module.exports = teamRouter
+teamRouter.delete("/:id", deleteTeamById);
+
+module.exports = teamRouter;

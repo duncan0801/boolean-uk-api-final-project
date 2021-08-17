@@ -1,13 +1,21 @@
-const playerRouter = require("express").Router()
+const playerRouter = require("express").Router();
 
-playerRouter.get("/", ()=>{})
+const {
+  getAllPlayers,
+  getPlayerById,
+  createNewPlayer,
+  updatedPlayer,
+  deletePlayerById,
+} = require("./controller");
 
-playerRouter.get("/:id", ()=>{})
+playerRouter.get("/", getAllPlayers);
 
-playerRouter.post("/", ()=>{})
+playerRouter.get("/:id", getPlayerById);
 
-playerRouter.patch("/:id", ()=>{})
+playerRouter.post("/", createNewPlayer);
 
-playerRouter.delete("/:id", ()=>{})
+playerRouter.patch("/:id", updatedPlayer);
 
-module.exports = playerRouter
+playerRouter.delete("/:id", deletePlayerById);
+
+module.exports = playerRouter;

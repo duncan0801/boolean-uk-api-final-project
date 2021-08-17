@@ -1,13 +1,21 @@
-const leagueRouter = require("express").Router()
+const leagueRouter = require("express").Router();
 
-leagueRouter.get("/", ()=>{})
+const {
+  getAllLeagues,
+  getLeagueById,
+  createNewLeague,
+  updatedLeague,
+  deleteLeagueById,
+} = require("./controller");
 
-leagueRouter.get("/:id", ()=>{})
+leagueRouter.get("/", getAllLeagues);
 
-leagueRouter.post("/", ()=>{})
+leagueRouter.get("/:id", getLeagueById);
 
-leagueRouter.patch("/:id", ()=>{})
+leagueRouter.post("/", createNewLeague);
 
-leagueRouter.delete("/:id", ()=>{})
+leagueRouter.patch("/:id", updatedLeague);
 
-module.exports = leagueRouter
+leagueRouter.delete("/:id", deleteLeagueById);
+
+module.exports = leagueRouter;
