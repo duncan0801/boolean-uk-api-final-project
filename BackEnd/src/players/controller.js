@@ -14,11 +14,20 @@ const getAllPlayers = async (req, res) => {
   }
   if (teamName) {
     try {
-      const allPlayers = await team.findUnique({
-        where: { name: teamName },
-        include: { players: true },
+      const allPlayers = await team.findMany({
+        where: {
+          name: {
+            contains: teamName
+          }
+        },
+        select: { players: true }
       });
-      res.json({ data: allPlayers.players });
+      console.log(allPlayers)
+      let playerList = []
+      for (const playerSet of allPlayers) {
+        playerList = [...playerList, ...playerSet.players]
+      }
+      res.json(playerList);
     } catch (error) {
       res.json({ error: error.message });
     }
@@ -37,7 +46,7 @@ const getPlayerById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const onePlayerById = await player.findUnique({
-      where: id,
+      where: {id},
     });
     res.json({ data: onePlayerById });
   } catch (error) {
@@ -78,7 +87,7 @@ const deletePlayerById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const deletedPlayer = await player.delete({
-      where: id,
+      where: {id},
     });
     res.json({ data: deletedPlayer });
   } catch (error) {

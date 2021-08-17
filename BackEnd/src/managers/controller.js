@@ -16,11 +16,11 @@ const getAllManagers = async (req, res) => {
   }
   if (teamName) {
     try {
-      const allManagers = await team.findUnique({
+      const allManagers = await team.findMany({
         where: { name: teamName },
         include: { manager: true },
       });
-      res.json({ data: allManagers.managers });
+      res.json({ data: allManagers });
     } catch (error) {
       res.json({ error: error.message });
     }
@@ -39,7 +39,7 @@ const getManagerById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const oneManagerById = await manager.findUnique({
-      where: id,
+      where: { id },
     });
     res.json({ data: oneManagerById });
   } catch (error) {
@@ -80,7 +80,7 @@ const deleteManagerById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const deletedManager = await manager.delete({
-      where: id,
+      where: { id },
     });
     res.json({ data: deletedManager });
   } catch (error) {
