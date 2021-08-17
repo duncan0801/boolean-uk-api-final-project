@@ -5,7 +5,7 @@ const getAllLeagues = async (req, res) => {
 
   if (leagueName) {
     try {
-      const oneLeague = await league.findUnique({
+      const oneLeague = await league.findMany({
         where: { name: leagueName },
       });
       res.json({ data: oneLeague });
@@ -27,7 +27,7 @@ const getLeagueById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const oneLeagueById = await league.findUnique({
-      where: id,
+      where: {id},
     });
     res.json({ data: oneLeagueById });
   } catch (error) {
@@ -68,7 +68,7 @@ const deleteLeagueById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const deletedLeague = await league.delete({
-      where: id,
+      where: { id },
     });
     res.json({ data: deletedLeague });
   } catch (error) {

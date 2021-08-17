@@ -13,7 +13,7 @@ const getFixtureById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const oneFixtureById = await fixture.findUnique({
-      where: id,
+      where: { id },
     });
     res.json({ data: oneFixtureById });
   } catch (error) {
@@ -54,7 +54,7 @@ const deleteFixtureById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const deletedFixture = await fixture.delete({
-      where: id,
+      where: { id },
     });
     res.json({ data: deletedFixture });
   } catch (error) {
