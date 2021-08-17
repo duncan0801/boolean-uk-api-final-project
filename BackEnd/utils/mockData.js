@@ -49,14 +49,6 @@ const teams = [
 
 const managers = [
     {
-        firstName: "Simone",
-        lastName: "Inzaghi",
-        age: 45,
-        previousTeams: ["Lazio"],
-        imageUrl: "https://worldfootballindex.com/wp-content/uploads/2021/01/Simone-Inzaghi-LAzio-Player.jpg",
-        teamId: 4
-    },
-    {
         firstName: "Massimiliano",
         lastName: "Allegri",
         age: 54,
@@ -79,6 +71,14 @@ const managers = [
         previousTeams: ["Empoli", "Venezia", "Imolese", "Fiorenzuola", "Borgosesia", "Olginatese"],
         imageUrl: "http://www.piemonteoggi.it/news/201052017112306_AlessioDionisiallenatoreconfermato.jpg",
         teamId: 3
+    },
+    {
+        firstName: "Simone",
+        lastName: "Inzaghi",
+        age: 45,
+        previousTeams: ["Lazio"],
+        imageUrl: "https://worldfootballindex.com/wp-content/uploads/2021/01/Simone-Inzaghi-LAzio-Player.jpg",
+        teamId: 4
     }
 ]
 // firstName String
@@ -234,46 +234,46 @@ const players = [
 
 const fixtures = [
     {
-        date: '2021-05-17T19:24:00',
+        date: new Date('2021-05-17T19:24:00').toISOString(),
         homeTeamId: 1,
         awayTeamId: 2,
         result: "2-0"
     },
     {
-        date: '2021-08-21T19:24:00',
+        date: new Date('2021-08-21T19:24:00').toISOString(),
         homeTeamId: 3,
         awayTeamId: 1
     },
     {
-        date: '2021-05-17T19:24:00',
+        date: new Date('2021-05-17T19:24:00').toISOString(),
         homeTeamId: 2,
         awayTeamId: 3,
         result: "4-4"
     },
     {
-        date: '2021-08-21T19:24:00',
+        date: new Date('2021-08-21T19:24:00').toISOString(),
         homeTeamId: 4,
         awayTeamId: 2,
     },
     {
-        date: '2021-05-17T19:24:00',
+        date: new Date('2021-05-17T19:24:00').toISOString(),
         homeTeamId: 3,
         awayTeamId: 4,
         result: "0-0"
     },
     {
-        date: '2021-08-21T19:24:00',
+        date: new Date('2021-08-21T19:24:00').toISOString(),
         homeTeamId: 4,
         awayTeamId: 3,
     },
     {
-        date: '2021-05-17T19:24:00',
+        date: new Date('2021-05-17T19:24:00').toISOString(),
         homeTeamId: 4,
         awayTeamId: 1,
         result: "0-3"
     },
     {
-        date: '2021-05-17T19:24:00',
+        date: new Date('2021-08-21T19:24:00').toISOString(),
         homeTeamId: 2,
         awayTeamId: 4,
     }
