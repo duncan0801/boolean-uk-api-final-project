@@ -1,118 +1,95 @@
 import React from "react";
 import "./App.css";
-import SaveIcon from "@material-ui/icons/Save";
-import DeleteIcon from "@material-ui/icons/Delete";
+import PlayerCard from "./components/PlayerCard";
 import {
-	ButtonGroup,
-	Button,
-	Checkbox,
-	FormControlLabel,
-	TextField,
-	makeStyles,
-	ThemeProvider,
-	createTheme,
-	Typography,
+  FormControl,
+  Select,
+  InputLabel,
+  MenuItem,
+  Grid,
 } from "@material-ui/core";
-import { orange, green } from "@material-ui/core/colors";
-import { useState } from "react";
+import SearchBar from "material-ui-search-bar";
+import "./App.css";
 
-const theme = createTheme({
-    typography: {
-        h2: {
-            fontSize: 40,
-        }
-    },
-	palette: {
-		primary: {
-			main: green[400],
-		},
-		secondary: {
-			main: orange[400],
-		},
-	},
-});
+// const theme = createTheme({
+//   typography: {
+//     h2: {
+//       fontSize: 40,
+//     },
+//   },
+//   palette: {
+//     primary: {
+//       main: "#FABC3C",
+//     },
+//     secondary: {
+//       main: "#E55812",
+//     },
+//   },
+// });
 
-const useStyles = makeStyles({
-	root: {
-		background: "linear-gradient(45deg, #333, #999)",
-		border: 0,
-		borderRadius: 15,
-		color: "white",
-		padding: "0 30px",
-		marginRight: "10px",
-	},
-});
-function ButtonStyled() {
-	const classes = useStyles();
-	return <Button className={classes.root}>This is a button</Button>;
-}
-
-function CheckboxExample() {
-	const [checked, setChecked] = useState(true);
-	return (
-		<div>
-			<ThemeProvider theme={theme}>
-				<Typography variant="h2">Welcome To A Test</Typography>
-				<Typography variant="subtitle1" component="div">TEST TEST</Typography>
-				<ButtonStyled />
-				<TextField
-					variant="outlined"
-					color="secondary"
-					type="email"
-					label="email"
-					placeholder="testing@test.com"
-				/>
-				<FormControlLabel
-					control={
-						<Checkbox
-							icon={<DeleteIcon />}
-							checked={checked}
-							onChange={(e) => setChecked(e.target.checked)}
-							inputProps={{
-								"aria-label": "secondary checkbox",
-							}}
-						/>
-					}
-					label="Test"
-				/>
-			</ThemeProvider>
-		</div>
-	);
-}
+// const useStyles = makeStyles({
+//   root: {
+//     background: "linear-gradient(45deg, #333, #999)",
+//     border: 0,
+//     borderRadius: 15,
+//     color: "white",
+//     padding: "0 30px",
+//     marginRight: "10px",
+//   },
+// });
+// function ButtonStyled() {
+//   const classes = useStyles();
+//   return <Button className={classes.root}>This is a button</Button>;
+// }
 
 function App() {
-	return (
-		<div className="App">
-			<h1>The Footy Oracle</h1>
-			<p>Coming soon...</p>
-			<ButtonGroup variant="contained" size="large">
-				<Button
-					startIcon={<DeleteIcon />}
-					color="primary"
-					href="#"
-					onClick={() => alert("hello")}
-					size="large"
-					style={{
-						fontSize: 14,
-					}}
-				>
-					Delete
-				</Button>
-				<Button
-					startIcon={<SaveIcon />}
-					color="secondary"
-					href="#"
-					onClick={() => alert("hello")}
-					style={{
-						fontSize: 14,
-					}}
-				>
-					Save
-				</Button>
-			</ButtonGroup>
-			<CheckboxExample />
-		</div>
-	);
+  return (
+    <>
+      <header>
+        <h1>The Footy Oracle</h1>
+      </header>
+      <main>
+        <div className="viewSection">
+          <FormControl variant="outlined" className="form">
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              style={{ minWidth: "100vw" }}
+            >
+              <InputLabel id="filterChoiceLabel">Search...</InputLabel>
+              <Select
+                labelId="filterChoiceLabel"
+                id="filterChoice"
+                value={10}
+                label="filter"
+                fullWidth
+              >
+                <MenuItem value={"leagues"}>Leagues</MenuItem>
+                <MenuItem value={"players"}>Players</MenuItem>
+                <MenuItem value={"managers"}>Managers</MenuItem>
+                <MenuItem value={"teams"}>Teams</MenuItem>
+                <MenuItem value={"fixtures"}>Fixtures</MenuItem>
+              </Select>
+              <SearchBar
+                onChange={() => console.log("onChange")}
+                onRequestSearch={() => console.log("onRequestSearch")}
+                style={{
+                  margin: "0 auto",
+                }}
+              />
+            </Grid>
+          </FormControl>
+          <Grid container className="infoSection">
+            <Grid item>
+              <PlayerCard/>
+            </Grid>
+          </Grid>
+        </div>
+      </main>
+    </>
+  );
 }
 
 export default App;
