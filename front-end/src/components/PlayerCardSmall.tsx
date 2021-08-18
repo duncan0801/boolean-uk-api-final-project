@@ -2,7 +2,7 @@ import "../styles/playerCard.css";
 
 function PlayerCardSmall() {
   return (
-    <a href="#"> 
+    <a href="#">
       <div className="card">
         <div className="imageContainer">
           <img
