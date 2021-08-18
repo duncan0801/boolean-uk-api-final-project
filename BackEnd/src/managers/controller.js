@@ -8,6 +8,7 @@ const getAllManagers = async (req, res) => {
       const allManagers = await manager.findMany({
         where: { firstName: name },
       });
+      res.header("Access-Control-Allow-Origin", "http://localhost:3000");
       res.json({ data: allManagers });
     } catch (error) {
       res.json({ error: error.message });
@@ -20,6 +21,7 @@ const getAllManagers = async (req, res) => {
         where: { name: teamName },
         include: { manager: true },
       });
+      res.header("Access-Control-Allow-Origin", "http://localhost:3000");
       res.json({ data: allManagers });
     } catch (error) {
       res.json({ error: error.message });
@@ -29,6 +31,7 @@ const getAllManagers = async (req, res) => {
 
   try {
     const allManagers = await manager.findMany();
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: allManagers });
   } catch (error) {
     res.json({ error: error.message });
@@ -41,6 +44,7 @@ const getManagerById = async (req, res) => {
     const oneManagerById = await manager.findUnique({
       where: { id },
     });
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: oneManagerById });
   } catch (error) {
     res.json({ error: error.message });
@@ -51,6 +55,7 @@ const createNewManager = async (req, res) => {
   const newManager = req.body;
   try {
     const brandNewManager = await manager.create({ data: newManager });
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: brandNewManager });
   } catch (error) {
     res.json({ error: error.message });
@@ -69,6 +74,7 @@ const updatedManager = async (req, res) => {
         where: { id },
         data: { ...managerExist, ...updatedInfo },
       });
+      res.header("Access-Control-Allow-Origin", "http://localhost:3000");
       res.json({ data: managerUpdate });
     }
   } catch (error) {
@@ -82,6 +88,7 @@ const deleteManagerById = async (req, res) => {
     const deletedManager = await manager.delete({
       where: { id },
     });
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: deletedManager });
   } catch (error) {
     res.json({ error: error.message });

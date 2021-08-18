@@ -1,10 +1,10 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-
 import Header from "./components/Header";
 import LeaguesSearch from "./pages/LeaguesSearch";
 import LeagueInfo from "./pages/LeagueInfo";
-
 import "./App.css";
+import ManagersSearch from "./pages/ManagersSearch";
+import ManagerInfo from "./pages/ManagerInfo";
 
 export default function App() {
   return (
@@ -17,9 +17,12 @@ export default function App() {
         <Route exact path="/leagues/:id">
           <LeagueInfo/>
         </Route>
-        {/* <Route path="/">
-          <BaseTemplate />
-        </Route> */}
+        <Route exact path="/managers">
+            <ManagersSearch/>
+        </Route>
+        <Route exact path="/managers/:id">
+            <ManagerInfo/>
+        </Route>
       </Switch>
     </>
   );

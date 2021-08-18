@@ -2,14 +2,20 @@ import "../styles/playerCard.css";
 import { Link } from "react-router-dom";
 
 type PlayerCardSmallProps = {
-  id: Number;
+  resource?: string;
+  id: number;
   imageUrl: string;
   name: string;
 };
 
-function PlayerCardSmall({ id, imageUrl, name }: PlayerCardSmallProps) {
+function PlayerCardSmall({
+  resource,
+  id,
+  imageUrl,
+  name,
+}: PlayerCardSmallProps) {
   return (
-    <Link to={`leagues/${id}`}>
+    <Link to={`${resource}/${id}`}>
       <div className="card">
         <div className="imageContainer">
           <img src={imageUrl} alt={name} />
