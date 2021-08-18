@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import useStore from "./store";
 import {
   FormControl,
   Select,
@@ -43,6 +44,8 @@ import PlayerCardSmall from "./components/PlayerCardSmall";
 // }
 
 function App() {
+  const getSearchPlayers = useStore((store) => store.getSearchPlayers);
+
   return (
     <>
       <header>
