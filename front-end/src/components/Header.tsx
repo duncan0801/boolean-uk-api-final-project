@@ -20,7 +20,7 @@ function Header() {
             <a href="#">Players</a>
           </li>
           <li>
-            <a href="#">Managers</a>
+            <Link to="/managers">Managers</Link>
           </li>
           <li>
             <a href="#">Fixtures</a>
