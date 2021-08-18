@@ -10,7 +10,7 @@ import {
 import LeagueCardBig from "../components/LeagueCardBig";
 import { useParams } from "react-router-dom";
 
-function LeaguesSearch() {
+function LeagueInfo() {
   const leagues = useStore((store) => store.leagues);
   const { id }: { id: string } = useParams();
   const leagueToView = leagues.find((league) => {
@@ -36,4 +36,4 @@ function LeaguesSearch() {
   return <h3>Loading...</h3>;
 }
 
-export default LeaguesSearch;
+export default LeagueInfo;
