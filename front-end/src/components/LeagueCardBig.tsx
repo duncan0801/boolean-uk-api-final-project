@@ -18,26 +18,30 @@ type LeagueCardBigProps = {
 // teams Team[]
 
 function LeagueCardBig({
+  id,
   imageUrl,
   name,
   numberOfTeams,
   country,
   teams,
 }: LeagueCardBigProps) {
+  console.log(teams);
   return (
     <div className="card">
       <div className="imageContainer">
         <img src={imageUrl} alt={name} />
       </div>
-      <h3>`Name of League: ${name}`</h3>
-      <h3>`Based in ${country}`</h3>
-      <h3>`Competitiors: ${numberOfTeams}`</h3>
+      <h3>Name of League: {name}</h3>
+      <h3>Based in {country}</h3>
+      <h3>Competitors: {numberOfTeams}</h3>
       <ul>
         <h3>Teams</h3>
         {teams.map((team) => {
-          <li>
-            <Link to={`/teams/${team.id}`}>{team.name}</Link>
-          </li>;
+          return (
+            <li>
+              <Link to={`/teams/${team.id}`}>{team.name}</Link>
+            </li>
+          );
         })}
       </ul>
     </div>
