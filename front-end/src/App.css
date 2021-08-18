@@ -32,3 +32,16 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.top-nav {
+  background-color: var(--yellow);
+}
+
+.tab-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0;
+  padding: 20px;
+  list-style: none;
+  text-align: center;
+}
