@@ -20,56 +20,56 @@ type Store = {
 };
 
 type Player = {
-  id: Number;
+  id: number;
   firstName: string;
   lastName: string;
-  height: Number;
-  shirtNo: Number;
+  height: number;
+  shirtNo: number;
   nationality: string;
-  weight: Number;
+  weight: number;
   position: string;
   imageUrl: string;
-  teamId: Number;
+  teamId: number;
 };
 
 export type Team = {
-  id: Number;
+  id: number;
   name: string;
   stadium: string;
-  yearFormed: Number;
+  yearFormed: number;
   badgeUrl: string;
-  leagueId: Number;
+  leagueId: number;
   manager?: Manager;
   players: Player[];
 };
 type Manager = {
-  id: Number;
+  id: number;
   firstName: string;
   lastName: string;
-  age: Number;
+  age: number;
   previousTeams: string[];
   imageUrl: string;
-  teamId: Number;
+  teamId: number;
 };
 
 type League = {
-  id: Number;
+  id: number;
   name: string;
   country: string;
-  numberOfTeams: Number;
+  numberOfTeams: number;
   imageUrl: string;
   teams: Team[];
 };
 
 type Fixture =
   | {
-      id: Number;
+      id: number;
       date: Date;
-      homeTeamId: Number;
-      awayTeamId: Number;
+      homeTeamId: number;
+      awayTeamId: number;
       result: string;
     }
-  | { id: Number; date: Date; homeTeamId: Number; awayTeamId: Number };
+  | { id: number; date: Date; homeTeamId: number; awayTeamId: number };
 
 const useStore = create<Store>((set, get) => ({
   players: [],
