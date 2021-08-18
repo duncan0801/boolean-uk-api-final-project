@@ -14,6 +14,7 @@ const getAllTeams = async (req, res) => {
   }
   try {
     const allTeams = await team.findMany();
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: allTeams });
   } catch (error) {
     res.json({ error: error.message });

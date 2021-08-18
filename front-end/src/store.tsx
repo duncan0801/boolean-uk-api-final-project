@@ -19,7 +19,7 @@ type Store = {
   setLeaguesSearchString: (searchValue: string) => void;
 };
 
-type Player = {
+export type Player = {
   id: Number;
   firstName: string;
   lastName: string;
@@ -42,7 +42,7 @@ export type Team = {
   manager?: Manager;
   players: Player[];
 };
-type Manager = {
+export type Manager = {
   id: Number;
   firstName: string;
   lastName: string;
@@ -52,7 +52,7 @@ type Manager = {
   teamId: Number;
 };
 
-type League = {
+export type League = {
   id: Number;
   name: string;
   country: string;
@@ -61,7 +61,7 @@ type League = {
   teams: Team[];
 };
 
-type Fixture =
+export type Fixture =
   | {
       id: Number;
       date: Date;

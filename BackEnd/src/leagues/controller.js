@@ -18,8 +18,8 @@ const getAllLeagues = async (req, res) => {
   try {
     const allLeagues = await league.findMany({
       include: {
-        teams: true
-      }
+        teams: true,
+      },
     });
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: allLeagues });
