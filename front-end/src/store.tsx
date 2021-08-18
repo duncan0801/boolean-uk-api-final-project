@@ -7,55 +7,57 @@ type Store = {
   managers: Manager[];
   leagues: League[];
   fixtures: Fixture[];
+  leaguesSearchString: string;
   searchPlayers: string;
+
   fetchPlayers: () => void;
   fetchTeams: () => void;
   fetchManagers: () => void;
   fetchLeagues: () => void;
   fetchFixtures: () => void;
   getSearchPlayers: () => void;
-  updateSearchPlayers: (newSearchBook: string) => void;
+  setLeaguesSearchString: (searchValue: string) => void;
 };
 
 type Player = {
   id: Number;
-  firstName: String;
-  lastName: String;
+  firstName: string;
+  lastName: string;
   height: Number;
   shirtNo: Number;
-  nationality: String;
+  nationality: string;
   weight: Number;
-  position: String;
-  imageUrl: String;
+  position: string;
+  imageUrl: string;
   teamId: Number;
 };
 
-type Team = {
+export type Team = {
   id: Number;
-  name: String;
-  stadium: String;
+  name: string;
+  stadium: string;
   yearFormed: Number;
-  badgeUrl: String;
+  badgeUrl: string;
   leagueId: Number;
   manager?: Manager;
   players: Player[];
 };
 type Manager = {
   id: Number;
-  firstName: String;
-  lastName: String;
+  firstName: string;
+  lastName: string;
   age: Number;
-  previousTeams: String[];
-  imageUrl: String;
+  previousTeams: string[];
+  imageUrl: string;
   teamId: Number;
 };
 
 type League = {
   id: Number;
-  name: String;
-  country: String;
+  name: string;
+  country: string;
   numberOfTeams: Number;
-  imageUrl: String;
+  imageUrl: string;
   teams: Team[];
 };
 
@@ -65,7 +67,7 @@ type Fixture =
       date: Date;
       homeTeamId: Number;
       awayTeamId: Number;
-      result: String;
+      result: string;
     }
   | { id: Number; date: Date; homeTeamId: Number; awayTeamId: Number };
 
@@ -103,15 +105,14 @@ const useStore = create<Store>((set, get) => ({
 
   searchPlayers: "",
   getSearchPlayers: () => {
-    let searchBooksVar = get().players.filter((player) =>
+    let searchPlayersVar = get().players.filter((player) =>
       player.lastName.toLowerCase().includes(get().searchPlayers.toLowerCase())
     );
-    return searchBooksVar;
+    return searchPlayersVar;
   },
-  updateSearchPlayers: (newSearchPlayer) => {
-    set({ searchPlayers: newSearchPlayer });
-    console.log("NEW SEARCH", newSearchPlayer);
-  },
+  leaguesSearchString: "",
+  setLeaguesSearchString: (searchValue) =>
+    set({ leaguesSearchString: searchValue }),
 }));
 
 export default useStore;

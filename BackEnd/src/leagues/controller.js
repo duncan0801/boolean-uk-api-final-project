@@ -17,6 +17,7 @@ const getAllLeagues = async (req, res) => {
 
   try {
     const allLeagues = await league.findMany();
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: allLeagues });
   } catch (error) {
     res.json({ error: error.message });
@@ -27,7 +28,7 @@ const getLeagueById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const oneLeagueById = await league.findUnique({
-      where: {id},
+      where: { id },
     });
     res.json({ data: oneLeagueById });
   } catch (error) {

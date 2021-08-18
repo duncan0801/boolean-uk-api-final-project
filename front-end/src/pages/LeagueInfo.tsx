@@ -21,26 +21,26 @@ function LeaguesSearch() {
     return (
       <main>
         <div className="viewSection">
-          <Grid
+          {/* <Grid
             container
             direction="row"
             alignItems="center"
             justifyContent="center"
             style={{ minWidth: "100vw" }}
-          >
-            <Grid container className="infoSection">
-              <Grid item>
-                {leagues.map((league) => {
-                  console.log(league.imageUrl);
-                  return (
-                    <CardSmall
-                      id={league.id}
-                      imageUrl={league.imageUrl}
-                      name={league.name}
-                    />
-                  );
-                })}
-              </Grid>
+          > */}
+
+          <Grid container className="infoSection">
+            <Grid item>
+              {leagues.map((league) => {
+                console.log(league.imageUrl);
+                return (
+                  <CardSmall
+                    id={league.id}
+                    imageUrl={league.imageUrl}
+                    name={league.name}
+                  />
+                );
+              })}
             </Grid>
           </Grid>
         </div>

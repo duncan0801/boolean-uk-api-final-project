@@ -1,12 +1,23 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import BaseTemplate from "./components/BaseTemplate";
+
+import Header from "./components/Header";
+// import LeaguesSearch from "./pages/LeaguesSearch"
 
 export default function App() {
   return (
-    <Switch>
-      <Route path="/">
-        <BaseTemplate />
-      </Route>
-    </Switch>
+    <>
+      <Header />
+      <Switch>
+        <Route path="/leagues">
+          <LeaguesSearch/>
+        </Route>
+        <Route path="/leagues/:id">
+          <LeaguesSearch />
+        </Route>
+        {/* <Route path="/">
+          <BaseTemplate />
+        </Route> */}
+      </Switch>
+    </>
   );
 }
