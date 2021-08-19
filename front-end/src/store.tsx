@@ -8,6 +8,7 @@ type Store = {
   leagues: League[];
   fixtures: Fixture[];
   currentTeam: Team | null;
+  currentFixture: Fixture | null;
   leaguesSearchString: string;
   searchPlayers: string;
   currentManager: Manager | null;
@@ -19,6 +20,7 @@ type Store = {
   fetchManagerById: (id: string) => void;
   fetchLeagues: () => void;
   fetchFixtures: () => void;
+  fetchFixtureById: (id: string) => void;
   getSearchPlayers: () => void;
   setLeaguesSearchString: (searchValue: string) => void;
 };
@@ -68,15 +70,15 @@ export type League = {
   teams: Team[];
 };
 
-export type Fixture =
-  | {
-      id: number;
-      date: Date;
-      homeTeamId: number;
-      awayTeamId: number;
-      result: string;
-    }
-  | { id: number; date: Date; homeTeamId: number; awayTeamId: number };
+export type Fixture = {
+  id: number;
+  date: Date;
+  homeTeamId: number;
+  awayTeamId: number;
+  result?: string;
+  homeTeam: Team;
+  awayTeam: Team;
+};
 
 const useStore = create<Store>((set, get) => ({
   players: [],
@@ -85,6 +87,7 @@ const useStore = create<Store>((set, get) => ({
   leagues: [],
   fixtures: [],
   currentTeam: null,
+  currentFixture: null,
   currentManager: null,
   fetchPlayers() {
     fetch(`http://localhost:4000/players`)
@@ -120,6 +123,11 @@ const useStore = create<Store>((set, get) => ({
     fetch(`http://localhost:4000/fixtures`)
       .then((resp) => resp.json())
       .then((fixtureData) => set({ fixtures: fixtureData.data }));
+  },
+  fetchFixtureById(id) {
+    fetch(`http://localhost:4000/fixtures/${id}`)
+      .then((resp) => resp.json())
+      .then((selectedFixture) => set({ currentFixture: selectedFixture.data }));
   },
 
   searchPlayers: "",
