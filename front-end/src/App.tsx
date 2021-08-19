@@ -35,6 +35,9 @@ export default function App() {
         <Route exact path="/managers/:id">
           <ManagerInfoPage />
         </Route>
+        <Route exact path="/players">
+          <PlayerSearch />
+        </Route>
         <Route exact path="/fixtures">
           <FixturesSearch />
         </Route>
