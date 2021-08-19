@@ -1,6 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/Header";
-import LeaguesSearch from "./pages/LeaguesSearch";
+import LeaguesSearch from "./pages/LeaguesSearch"
+import PlayerSearch from "./pages/PlayersSearch";
 import LeagueInfo from "./pages/LeagueInfo";
 import TeamsSearch from "./pages/TeamsSearch";
 import TeamInfoPage from "./pages/TeamInfoPage";
