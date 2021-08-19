@@ -43,6 +43,9 @@ const getManagerById = async (req, res) => {
   try {
     const oneManagerById = await manager.findUnique({
       where: { id },
+      include: {
+        team: true,
+      },
     });
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: oneManagerById });

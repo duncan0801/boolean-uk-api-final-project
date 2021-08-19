@@ -10,6 +10,12 @@ type Store = {
   leaguesSearchString: string;
   searchPlayers: string;
 
+  setPlayers: (players:  Player[]) => void,
+    setTeams: (teams:  Team[]) => void
+    setManager: (manager: Manager[]) => void,
+    setLeagues: (leagues: League[] ) => void
+    setFixtures: (fixtures: Fixture[]) => void
+
   fetchPlayers: () => void;
   fetchTeams: () => void;
   fetchManagers: () => void;
@@ -75,10 +81,15 @@ export type Fixture =
 
 const useStore = create<Store>((set, get) => ({
   players: [],
+  setPlayers: (players) => set({players}),
   teams: [],
+  setTeams: (teams) => set({teams}),
   managers: [],
+  setManager: (manager) => set({manager}),
   leagues: [],
+  setLeagues: (leagues) => set({leagues}),
   fixtures: [],
+  setFixtures: (fixtures) => set({fixtures}),
   fetchPlayers() {
     fetch(`http://localhost:4000/players`)
       .then((resp) => resp.json())
