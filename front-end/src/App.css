@@ -19,7 +19,7 @@ h1 {
 }
 
 main {
-  height: 85vh;
+  min-height: 85vh;
   background-color: white;
 }
 
@@ -48,4 +48,15 @@ main {
 
 h3 {
   color: var(--black);
+}
+
+.imageContainer{
+  display: grid;
+  place-items: center;
+}
+
+img{
+  object-fit: cover;
+  height: 16rem;
+  width: 16rem;
 }
