@@ -10,7 +10,7 @@ type ManagersCardBigProps = {
   previousTeams: string[];
   imageUrl: string;
   teamId: number;
-  team: Team | undefined
+  team: Team | undefined;
 };
 // id  Int @id @default(autoincrement())
 // name String
@@ -27,7 +27,7 @@ function ManagerCardBig({
   previousTeams,
   imageUrl,
   teamId,
-  team
+  team,
 }: ManagersCardBigProps) {
   return (
     <div className="card">
@@ -39,16 +39,14 @@ function ManagerCardBig({
         <span className="lstName">{lastName}</span>
       </h2>
       <h3>Age: {age}</h3>
-      <h3>Current Team: {team ? team.name : "No team available"}</h3>
+      <h3>
+        Current Team: { team ? <Link to={`http://localhost:3000/teams/${team.id}`}>{team.name}</Link> : "No team info"}
+      </h3>
       <h3>
         Previous Teams:
         <ul>
           {previousTeams.map((team) => {
-            return (
-              <Link to={`/teams/?name=${team}`}>
-                <li>{team}</li>
-              </Link>
-            );
+            return <li key={team}>{team}</li>;
           })}
         </ul>
       </h3>
