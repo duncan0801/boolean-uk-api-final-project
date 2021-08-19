@@ -45,3 +45,7 @@ main {
   list-style: none;
   text-align: center;
 }
+
+h3 {
+  color: var(--black);
+}

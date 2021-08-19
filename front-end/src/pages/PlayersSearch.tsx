@@ -25,12 +25,7 @@ const searchBarStyle = makeStyles({
 })
  
 function ContainerStyled() {
-  const fetchPlayers = useStore((store) => store.fetchPlayers);
   const players = useStore((store) => store.players);
-
-  useEffect(() => {
-    fetchPlayers();
-  }, []);
 
   const classes = cardContainerStyle()
 
@@ -63,18 +58,23 @@ function SearchBarEdit() {
 }
 
 function PlayerSearch() {
-  
+  const fetchPlayers = useStore((store) => store.fetchPlayers);
   const players = useStore((store) => store.players);
 
-  if (players) {
-    return (
+  useEffect(() => {
+    fetchPlayers();
+  }, []);
+
+
+ return players.length > 0 ?
+     (
       <main>
         <SearchBarEdit/>
         <ContainerStyled/>
       </main>
-    );
-  }
-  return <h3>Loading...</h3>;
+    )
+  
+   : <h3>Loading...</h3>
 }
 
-export default PlayerSearch;
+export default PlayerSearch
