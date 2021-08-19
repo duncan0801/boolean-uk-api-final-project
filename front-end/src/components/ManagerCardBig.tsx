@@ -1,5 +1,6 @@
 import "../styles/playerCard.css";
 import { Link } from "react-router-dom";
+import { Team } from "../store";
 
 type ManagersCardBigProps = {
   id: number;
@@ -9,6 +10,7 @@ type ManagersCardBigProps = {
   previousTeams: string[];
   imageUrl: string;
   teamId: number;
+  team: Team | undefined
 };
 // id  Int @id @default(autoincrement())
 // name String
@@ -25,6 +27,7 @@ function ManagerCardBig({
   previousTeams,
   imageUrl,
   teamId,
+  team
 }: ManagersCardBigProps) {
   return (
     <div className="card">
@@ -36,7 +39,7 @@ function ManagerCardBig({
         <span className="lstName">{lastName}</span>
       </h2>
       <h3>Age: {age}</h3>
-      <h3>Current Team: ********</h3>
+      <h3>Current Team: {team ? team.name : "No team available"}</h3>
       <h3>
         Previous Teams:
         <ul>

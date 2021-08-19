@@ -1,36 +1,31 @@
 import React, { useEffect } from "react";
 import useStore from "../store";
-import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Grid,
-} from "@material-ui/core";
-import LeagueCardBig from "../components/LeagueCardBig";
 import { useParams } from "react-router-dom";
 import ManagerCardBig from "../components/ManagerCardBig";
 
 function ManagerInfoPage() {
-  const managers = useStore((store) => store.managers);
+  const fetchManagerById = useStore((store) => store.fetchManagerById);
+  const currentManager = useStore((store) => store.currentManager);
   const { id }: { id: string } = useParams();
-  const managerToView = managers.find((manager) => {
-    return manager.id === Number(id);
-  });
 
-  if (managerToView) {
-    console.log(managerToView);
+  useEffect(() => {
+    fetchManagerById(id);
+  }, []);
+
+  if (currentManager) {
+    console.log(currentManager);
     return (
       <main>
         <div className="viewSection">
           <ManagerCardBig
-            id={managerToView.id}
-            firstName={managerToView.firstName}
-            lastName={managerToView.lastName}
-            age={managerToView.age}
-            previousTeams={managerToView.previousTeams}
-            imageUrl={managerToView.imageUrl}
-            teamId={managerToView.teamId}
+            id={currentManager.id}
+            firstName={currentManager.firstName}
+            lastName={currentManager.lastName}
+            age={currentManager.age}
+            previousTeams={currentManager.previousTeams}
+            imageUrl={currentManager.imageUrl}
+            teamId={currentManager.teamId}
+            team={currentManager.team}
           />
         </div>
       </main>

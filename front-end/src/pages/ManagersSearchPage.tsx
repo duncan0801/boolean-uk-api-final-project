@@ -13,6 +13,7 @@ function ManagersSearchPage() {
   if (!managers) {
     return <h3>Loading...</h3>;
   }
+  console.log(managers);
   return (
     <main>
       <div className="viewSection">
