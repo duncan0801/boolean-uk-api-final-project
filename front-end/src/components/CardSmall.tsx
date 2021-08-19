@@ -1,19 +1,14 @@
 import "../styles/playerCard.css";
 import { Link } from "react-router-dom";
 
-type PlayerCardSmallProps = {
+type CardSmallProps = {
   resource?: string;
   id: number;
   imageUrl: string;
   name: string;
 };
 
-function PlayerCardSmall({
-  resource,
-  id,
-  imageUrl,
-  name,
-}: PlayerCardSmallProps) {
+function CardSmall({ resource, id, imageUrl, name }: CardSmallProps) {
   return (
     <Link to={`${resource}/${id}`}>
       <div className="card">
@@ -26,4 +21,4 @@ function PlayerCardSmall({
   );
 }
 
-export default PlayerCardSmall;
+export default CardSmall;
