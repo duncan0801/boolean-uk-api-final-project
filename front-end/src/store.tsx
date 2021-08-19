@@ -7,18 +7,19 @@ type Store = {
   managers: Manager[];
   leagues: League[];
   fixtures: Fixture[];
+  currentTeam: Team | null;
   leaguesSearchString: string;
   searchPlayers: string;
 
   fetchPlayers: () => void;
   fetchTeams: () => void;
+  fetchTeamById: (id: string) => void;
   fetchManagers: () => void;
   fetchLeagues: () => void;
   fetchFixtures: () => void;
   getSearchPlayers: () => void;
   setLeaguesSearchString: (searchValue: string) => void;
 };
-
 
 export type Player = {
   id: number;
@@ -40,6 +41,7 @@ export type Team = {
   yearFormed: number;
   badgeUrl: string;
   leagueId: number;
+  league?: League;
   manager?: Manager;
   players: Player[];
 };
@@ -79,6 +81,7 @@ const useStore = create<Store>((set, get) => ({
   managers: [],
   leagues: [],
   fixtures: [],
+  currentTeam: null,
   fetchPlayers() {
     fetch(`http://localhost:4000/players`)
       .then((resp) => resp.json())
@@ -88,6 +91,11 @@ const useStore = create<Store>((set, get) => ({
     fetch(`http://localhost:4000/teams`)
       .then((resp) => resp.json())
       .then((teamData) => set({ teams: teamData.data }));
+  },
+  fetchTeamById(id) {
+    fetch(`http://localhost:4000/teams/${id}`)
+      .then((resp) => resp.json())
+      .then((selectedTeam) => set({ currentTeam: selectedTeam.data }));
   },
   fetchManagers() {
     fetch(`http://localhost:4000/managers`)

@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import LeaguesSearch from "./pages/LeaguesSearch";
 import LeagueInfo from "./pages/LeagueInfo";
 import TeamsSearch from "./pages/TeamsSearch";
-import TeamInfo from "./pages/TeamInfo";
+import TeamInfoPage from "./pages/TeamInfoPage";
 import "./App.css";
 import ManagersSearch from "./pages/ManagersSearch";
 import ManagerInfo from "./pages/ManagerInfo";
@@ -23,13 +23,13 @@ export default function App() {
           <TeamsSearch />
         </Route>
         <Route exact path="/teams/:id">
-          <TeamInfo />
+          <TeamInfoPage />
         </Route>
         <Route exact path="/managers">
-            <ManagersSearch/>
+          <ManagersSearch />
         </Route>
         <Route exact path="/managers/:id">
-            <ManagerInfo/>
+          <ManagerInfo />
         </Route>
       </Switch>
     </>
