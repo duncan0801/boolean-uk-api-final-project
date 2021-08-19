@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import SearchBar from "material-ui-search-bar";
 
 const cardContainerStyle = makeStyles({
-  root: {
+  container: {
     backgroundColor: '#fabc3c',
     padding: '4rem 0',
     margin: '0'
@@ -29,7 +29,7 @@ function ContainerStyled() {
 
   const classes = cardContainerStyle()
 
-  return <Grid container spacing={8} justify="center" className={classes.root}>
+  return <Grid container spacing={8} justify="center" className={classes.container}>
           {players.map((player) => {
             return (
               <Grid item>
@@ -57,7 +57,7 @@ function SearchBarEdit() {
           </FormControl>
 }
 
-function PlayerSearch() {
+function PlayersSearch() {
   const fetchPlayers = useStore((store) => store.fetchPlayers);
   const players = useStore((store) => store.players);
 
@@ -77,4 +77,4 @@ function PlayerSearch() {
    : <h3>Loading...</h3>
 }
 
-export default PlayerSearch
+export default PlayersSearch
