@@ -7,11 +7,13 @@ type Store = {
   managers: Manager[];
   leagues: League[];
   fixtures: Fixture[];
+  currentTeam: Team | null;
   leaguesSearchString: string;
   searchPlayers: string;
 
   fetchPlayers: () => void;
   fetchTeams: () => void;
+  fetchTeamById: (id: string) => void;
   fetchManagers: () => void;
   fetchLeagues: () => void;
   fetchFixtures: () => void;
@@ -19,57 +21,59 @@ type Store = {
   setLeaguesSearchString: (searchValue: string) => void;
 };
 
-type Player = {
-  id: Number;
+export type Player = {
+  id: number;
   firstName: string;
   lastName: string;
-  height: Number;
-  shirtNo: Number;
+  height: number;
+  shirtNo: number;
   nationality: string;
-  weight: Number;
+  weight: number;
   position: string;
   imageUrl: string;
-  teamId: Number;
+  teamId: number;
 };
 
 export type Team = {
-  id: Number;
+  id: number;
   name: string;
   stadium: string;
-  yearFormed: Number;
+  yearFormed: number;
   badgeUrl: string;
-  leagueId: Number;
+  leagueId: number;
+  league?: League;
   manager?: Manager;
   players: Player[];
 };
-type Manager = {
-  id: Number;
+
+export type Manager = {
+  id: number;
   firstName: string;
   lastName: string;
-  age: Number;
+  age: number;
   previousTeams: string[];
   imageUrl: string;
-  teamId: Number;
+  teamId: number;
 };
 
-type League = {
-  id: Number;
+export type League = {
+  id: number;
   name: string;
   country: string;
-  numberOfTeams: Number;
+  numberOfTeams: number;
   imageUrl: string;
   teams: Team[];
 };
 
-type Fixture =
+export type Fixture =
   | {
-      id: Number;
+      id: number;
       date: Date;
-      homeTeamId: Number;
-      awayTeamId: Number;
+      homeTeamId: number;
+      awayTeamId: number;
       result: string;
     }
-  | { id: Number; date: Date; homeTeamId: Number; awayTeamId: Number };
+  | { id: number; date: Date; homeTeamId: number; awayTeamId: number };
 
 const useStore = create<Store>((set, get) => ({
   players: [],
@@ -77,6 +81,7 @@ const useStore = create<Store>((set, get) => ({
   managers: [],
   leagues: [],
   fixtures: [],
+  currentTeam: null,
   fetchPlayers() {
     fetch(`http://localhost:4000/players`)
       .then((resp) => resp.json())
@@ -86,6 +91,11 @@ const useStore = create<Store>((set, get) => ({
     fetch(`http://localhost:4000/teams`)
       .then((resp) => resp.json())
       .then((teamData) => set({ teams: teamData.data }));
+  },
+  fetchTeamById(id) {
+    fetch(`http://localhost:4000/teams/${id}`)
+      .then((resp) => resp.json())
+      .then((selectedTeam) => set({ currentTeam: selectedTeam.data }));
   },
   fetchManagers() {
     fetch(`http://localhost:4000/managers`)

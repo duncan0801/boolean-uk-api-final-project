@@ -18,10 +18,11 @@ const getAllLeagues = async (req, res) => {
   try {
     const allLeagues = await league.findMany({
       include: {
-        teams: true
-      }
+        teams: true,
+      },
     });
     res.json({ data: allLeagues });
+    console.log("allLeagues");
   } catch (error) {
     res.json({ error: error.message });
   }
