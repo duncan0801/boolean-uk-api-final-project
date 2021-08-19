@@ -1,9 +1,30 @@
 import { useEffect } from "react";
 import useStore from "../store";
-import { Grid } from "@material-ui/core";
+import { Grid, FormControl } from "@material-ui/core";
 import CardSmall from "../components/CardSmall";
+import { makeStyles } from "@material-ui/core/styles"
+import SearchBar from "material-ui-search-bar";
 
-function PlayerSearch() {
+const cardContainerStyle = makeStyles({
+  root: {
+    backgroundColor: '#fabc3c',
+    padding: '4rem 0',
+    margin: '0'
+  }
+})
+
+const searchBarStyle = makeStyles({
+  searchbar: {
+    width: '100%'
+  },
+  container: {
+    display: 'grid',
+    placeContent: 'center',
+    backgroundColor: '#fabc3c'
+  }
+})
+ 
+function ContainerStyled() {
   const fetchPlayers = useStore((store) => store.fetchPlayers);
   const players = useStore((store) => store.players);
 
@@ -11,33 +32,45 @@ function PlayerSearch() {
     fetchPlayers();
   }, []);
 
+  const classes = cardContainerStyle()
+
+  return <Grid container spacing={8} justify="center" className={classes.root}>
+          {players.map((player) => {
+            return (
+              <Grid item>
+                <CardSmall
+                  key={`${player.firstName} ${player.lastName}`}
+                  id={player.id}
+                  imageUrl={player.imageUrl}
+                  name={`${player.firstName} ${player.lastName}`}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+}
+
+function SearchBarEdit() {
+  const classes = searchBarStyle()
+
+  return  <FormControl className={classes.container}>
+            <SearchBar
+              className={classes.searchbar}
+              onChange={() => console.log("onChange")}
+              onRequestSearch={() => console.log("onRequestSearch")}
+            />
+          </FormControl>
+}
+
+function PlayerSearch() {
+  
+  const players = useStore((store) => store.players);
+
   if (players) {
     return (
       <main>
-        <div className="viewSection">
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            style={{ minWidth: "100vw" }}
-          >
-            <Grid container className="infoSection">
-              <Grid item>
-                {players.map((player) => {
-                  return (
-                    <CardSmall
-                      key={`${player.firstName} ${player.lastName}`}
-                      id={player.id}
-                      imageUrl={player.imageUrl}
-                      name={`${player.firstName} ${player.lastName}`}
-                    />
-                  );
-                })}
-              </Grid>
-            </Grid>
-          </Grid>
-        </div>
+        <SearchBarEdit/>
+        <ContainerStyled/>
       </main>
     );
   }

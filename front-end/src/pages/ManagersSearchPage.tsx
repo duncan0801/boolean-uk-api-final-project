@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useStore from "../store";
 import { Grid } from "@material-ui/core";
 import CardSmall from "../components/CardSmall";
-function ManagersSearch() {
+function ManagersSearchPage() {
   const fetchManagers = useStore((state) => state.fetchManagers);
   const managers = useStore((state) => state.managers);
 
@@ -13,6 +13,7 @@ function ManagersSearch() {
   if (!managers) {
     return <h3>Loading...</h3>;
   }
+  console.log(managers);
   return (
     <main>
       <div className="viewSection">
@@ -43,4 +44,4 @@ function ManagersSearch() {
   );
 }
 
-export default ManagersSearch;
+export default ManagersSearchPage;

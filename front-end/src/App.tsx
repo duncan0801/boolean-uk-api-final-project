@@ -6,10 +6,11 @@ import LeagueInfo from "./pages/LeagueInfo";
 import TeamsSearch from "./pages/TeamsSearch";
 import TeamInfoPage from "./pages/TeamInfoPage";
 import "./App.css";
-import ManagersSearch from "./pages/ManagersSearch";
-import ManagerInfo from "./pages/ManagerInfo";
 import FixturesSearch from "./pages/FixturesSearch";
 import FixtureInfoPage from "./pages/FixtureInfoPage";
+import ManagersSearchPage from "./pages/ManagersSearchPage";
+import ManagerInfoPage from "./pages/ManagerInfoPage";
+
 
 export default function App() {
   return (
@@ -29,10 +30,10 @@ export default function App() {
           <TeamInfoPage />
         </Route>
         <Route exact path="/managers">
-          <ManagersSearch />
+          <ManagersSearchPage />
         </Route>
         <Route exact path="/managers/:id">
-          <ManagerInfo />
+          <ManagerInfoPage />
         </Route>
         <Route exact path="/fixtures">
           <FixturesSearch />
