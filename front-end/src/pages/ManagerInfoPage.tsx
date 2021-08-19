@@ -11,7 +11,7 @@ import LeagueCardBig from "../components/LeagueCardBig";
 import { useParams } from "react-router-dom";
 import ManagerCardBig from "../components/ManagerCardBig";
 
-function ManagerInfo() {
+function ManagerInfoPage() {
   const managers = useStore((store) => store.managers);
   const { id }: { id: string } = useParams();
   const managerToView = managers.find((manager) => {
@@ -39,4 +39,4 @@ function ManagerInfo() {
   return <h3>Loading...</h3>;
 }
 
-export default ManagerInfo;
+export default ManagerInfoPage;

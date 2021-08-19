@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useStore from "../store";
 import { Grid } from "@material-ui/core";
 import CardSmall from "../components/CardSmall";
-function ManagersSearch() {
+function ManagersSearchPage() {
   const fetchManagers = useStore((state) => state.fetchManagers);
   const managers = useStore((state) => state.managers);
 
@@ -43,4 +43,4 @@ function ManagersSearch() {
   );
 }
 
-export default ManagersSearch;
+export default ManagersSearchPage;
