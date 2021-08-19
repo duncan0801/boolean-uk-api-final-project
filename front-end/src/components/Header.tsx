@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { FormControl } from "@material-ui/core";
-import SearchBar from "material-ui-search-bar";
 
 function Header() {
   return (
@@ -27,16 +25,6 @@ function Header() {
           </li>
         </ul>
       </nav>
-
-      <FormControl>
-        <SearchBar
-          onChange={() => console.log("onChange")}
-          onRequestSearch={() => console.log("onRequestSearch")}
-          style={{
-            margin: "0 auto",
-          }}
-        />
-      </FormControl>
     </>
   );
 }
