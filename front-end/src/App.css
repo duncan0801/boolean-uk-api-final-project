@@ -20,7 +20,6 @@ h1 {
 
 main {
   min-height: 85vh;
-  background-color: white;
 }
 
 .viewSection {
@@ -50,12 +49,12 @@ h3 {
   color: var(--black);
 }
 
-.imageContainer{
+.imageContainer {
   display: grid;
   place-items: center;
 }
 
-img{
+img {
   object-fit: cover;
   height: 16rem;
   width: 16rem;
