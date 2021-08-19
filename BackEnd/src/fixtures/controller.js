@@ -2,7 +2,12 @@ const { fixture } = require("../../utils/dbClient");
 
 const getAllFixtures = async (req, res) => {
   try {
-    const allFixtures = await fixture.findMany();
+    const allFixtures = await fixture.findMany({
+      include: {
+        homeTeam: true,
+        awayTeam: true,
+      },
+    });
     res.json({ data: allFixtures });
   } catch (error) {
     res.json({ error: error.message });
@@ -14,6 +19,10 @@ const getFixtureById = async (req, res) => {
   try {
     const oneFixtureById = await fixture.findUnique({
       where: { id },
+      include: {
+        homeTeam: true,
+        awayTeam: true,
+      },
     });
     res.json({ data: oneFixtureById });
   } catch (error) {

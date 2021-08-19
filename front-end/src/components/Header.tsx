@@ -23,7 +23,7 @@ function Header() {
             <Link to="/managers">Managers</Link>
           </li>
           <li>
-            <a href="#">Fixtures</a>
+            <Link to="/fixtures">Fixtures</Link>
           </li>
         </ul>
       </nav>
