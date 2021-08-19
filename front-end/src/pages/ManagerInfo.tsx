@@ -30,7 +30,7 @@ function ManagerInfo() {
             age={managerToView.age}
             previousTeams={managerToView.previousTeams}
             imageUrl={managerToView.imageUrl}
-            teamId={managerToView.teamId}
+            team={managerToView.team}
           />
         </div>
       </main>

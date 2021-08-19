@@ -30,7 +30,11 @@ const getAllManagers = async (req, res) => {
   }
 
   try {
-    const allManagers = await manager.findMany();
+    const allManagers = await manager.findMany({
+      include: {
+        team: true,
+      },
+    });
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: allManagers });
   } catch (error) {
