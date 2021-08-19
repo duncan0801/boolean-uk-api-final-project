@@ -26,7 +26,7 @@ const teams = [
     stadium: "Gewiss Stadium",
     yearFormed: 1907,
     badgeUrl:
-      "https://en.wikipedia.org/wiki/Atalanta_B.C.#/media/File:AtalantaBC.svg",
+      "https://1000logos.net/wp-content/uploads/2018/06/Atalanta-Symbol.jpg",
     leagueId: 1,
   },
   {
@@ -34,7 +34,7 @@ const teams = [
     stadium: "Mapei Stadium",
     yearFormed: 1920,
     badgeUrl:
-      "https://en.wikipedia.org/wiki/U.S._Sassuolo_Calcio#/media/File:US_Sassuolo_Calcio_logo.svg",
+      "https://upload.wikimedia.org/wikipedia/en/thumb/1/1c/US_Sassuolo_Calcio_logo.svg/1200px-US_Sassuolo_Calcio_logo.svg.png",
     leagueId: 1,
   },
   {
@@ -42,7 +42,7 @@ const teams = [
     stadium: "Giuseppe Meazza",
     yearFormed: 1908,
     badgeUrl:
-      "https://en.wikipedia.org/wiki/Inter_Milan#/media/File:FC_Internazionale_Milano_2021.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/FC_Internazionale_Milano_2021.svg/1200px-FC_Internazionale_Milano_2021.svg.png",
     leagueId: 1,
   },
 ];
@@ -66,7 +66,7 @@ const managers = [
       "Aglianese",
     ],
     imageUrl:
-      "https://en.wikipedia.org/wiki/Massimiliano_Allegri#/media/File:Allegri_with_Milan_players_(cropped)_-_2.jpg",
+      "https://www.coachesvoice.com/wp-content/uploads/2021/06/AllegriMobile.jpg",
     teamId: 1,
   },
   {
@@ -75,7 +75,7 @@ const managers = [
     age: 63,
     previousTeams: ["Genoa", "Palermo", "Inter Milan", "Crotone"],
     imageUrl:
-      "https://en.wikipedia.org/wiki/Gian_Piero_Gasperini#/media/File:Gian-piero-gasperini-2019.png",
+      "https://i.guim.co.uk/img/media/312ebba750f7c58408ed1852668115a03fc09569/0_159_2873_1724/master/2873.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=7f91f857f094f75a4080c7ebd0af2536",
     teamId: 2,
   },
   {
@@ -181,7 +181,7 @@ const players = [
     weight: 75,
     position: "Forward",
     imageUrl:
-      "https://en.wikipedia.org/wiki/Luis_Muriel#/media/File:FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Luis_Muriel.jpg",
+      "https://balonlatino.net/wp-content/uploads/2019/07/luis-muriel-900x485.jpg",
     teamId: 2,
   },
   {
@@ -193,7 +193,7 @@ const players = [
     weight: 72,
     position: "Forward",
     imageUrl:
-      "https://en.wikipedia.org/wiki/Domenico_Berardi#/media/File:Domenico_Berardi,_Palazzo_Chigi,_2021.jpg",
+      "https://www.thesportsman.com/media/images/admin/football/original/Domenico_Berardi_Sssuolo.jpg",
     teamId: 3,
   },
   {
@@ -239,7 +239,7 @@ const players = [
     weight: 75,
     position: "Winger",
     imageUrl:
-      "https://en.wikipedia.org/wiki/Ivan_Peri%C5%A1i%C4%87#/media/File:Ivan_Peri%C5%A1i%C4%87_(cropped).jpg",
+      "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/06/10/15/ivan-perisic-2.jpg",
     teamId: 4,
   },
   {
@@ -251,7 +251,7 @@ const players = [
     weight: 88,
     position: "Goalkeeper",
     imageUrl:
-      "https://en.wikipedia.org/wiki/Samir_Handanovi%C4%87#/media/File:Samir_Handanovi%C4%87_Slovenia.jpg",
+      "https://www.theinfostride.com/wp-content/uploads/2020/03/Samir-Handanovic.jpg",
     teamId: 4,
   },
 ];
