@@ -39,7 +39,8 @@ const getManagerById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const oneManagerById = await manager.findUnique({
-      where: { id }
+      where: { id },
+      include: { team: true }
     });
     res.json({ data: oneManagerById });
   } catch (error) {

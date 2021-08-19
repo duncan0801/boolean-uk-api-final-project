@@ -12,13 +12,13 @@ function Header() {
             <Link to="/leagues">Leagues</Link>
           </li>
           <li>
-            <a href="#">Teams</a>
+            <Link to="/teams">Teams</Link>
           </li>
           <li>
             <a href="/players">Players</a>
           </li>
           <li>
-            <a href="#">Managers</a>
+            <Link to="/managers">Managers</Link>
           </li>
           <li>
             <a href="#">Fixtures</a>

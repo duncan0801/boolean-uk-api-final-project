@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Team } from "../store";
 
 type LeagueCardBigProps = {
-  id: Number;
+  id: number;
   imageUrl: string;
   name: string;
-  numberOfTeams: Number;
+  numberOfTeams: number;
   country: string;
   teams: Team[];
 };
