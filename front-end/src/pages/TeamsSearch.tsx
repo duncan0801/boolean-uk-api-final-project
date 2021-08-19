@@ -27,6 +27,7 @@ function TeamsSearch() {
                 {teams.map((team) => {
                   return (
                     <CardSmall
+                      resource="teams"
                       id={team.id}
                       imageUrl={team.badgeUrl}
                       name={team.name}

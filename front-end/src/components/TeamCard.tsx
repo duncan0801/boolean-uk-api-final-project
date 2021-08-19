@@ -1,10 +1,10 @@
 import "../styles/playerCard.css";
-import useStore from "../store";
+import useStore, { League } from "../store";
 import { Link } from "react-router-dom";
 import { Manager } from "../store";
 import { Player } from "../store";
 import { useEffect } from "react";
-import TeamInfo from "../pages/TeamInfo";
+import TeamInfoPage from "../pages/TeamInfoPage";
 
 type TeamCardProps = {
   id: Number;
@@ -13,6 +13,7 @@ type TeamCardProps = {
   yearFormed: Number;
   badgeUrl: string;
   leagueId: Number;
+  league?: League;
   manager?: Manager;
   players: Player[];
 };
@@ -36,61 +37,65 @@ function TeamCard({
   yearFormed,
   badgeUrl,
   leagueId,
+  league,
   manager,
   players,
 }: TeamCardProps) {
-  const leagues = useStore((store) => store.leagues);
-  const fetchLeagues = useStore((store) => store.fetchLeagues);
+  // const leagues = useStore((store) => store.leagues);
   const teams = useStore((store) => store.teams);
-
-  useEffect(() => {
-    fetchLeagues();
-  }, []);
+  // const managers = useStore((store) => store.managers);
 
   const team = teams.find((team) => {
     return team.id === id;
   });
 
-  const league = leagues.find((league) => {
-    return league.id === leagueId;
-  });
-  if (league && manager && team) {
+  // const league = leagues.find((league) => {
+  //   return league.id === leagueId;
+  // });
+  console.log(manager);
+
+  if (team) {
     return (
-      <Link to={`/teams/${team.id}`}>
-        <div className="card">
-          <div className="imageContainer">
-            <img src={badgeUrl} alt={name} />
-          </div>
-          <h3>Team Name: {name}</h3>
-          <h3>Stadium: {stadium}</h3>
-          <h3>Year Formed: {yearFormed}</h3>
-          <div>
-            <h3>
-              Playing in:<Link to={`/leagues/${league.id}`}>{league.name}</Link>{" "}
-            </h3>
-          </div>
+      // <Link to={`/teams/${team.id}`}>
+      <div className="card">
+        <div className="imageContainer">
+          <img src={badgeUrl} alt={name} />
+        </div>
+        <h3>Team Name: {name}</h3>
+        <h3>Stadium: {stadium}</h3>
+        <h3>Year Formed: {yearFormed}</h3>
+        <div>
           <h3>
-            Managed by:
+            Playing in:
+            {league ? (
+              <Link to={`/leagues/${leagueId}`}>{league.name}</Link>
+            ) : null}
+          </h3>
+        </div>
+        <h3>
+          Managed by:
+          {manager ? (
             <Link to={`/managers/${manager.id}`}>
               {" "}
               {`${manager.firstName} ${manager.firstName}`}
             </Link>
-          </h3>
+          ) : null}
+        </h3>
 
-          <ul>
-            <h3>Players</h3>
-            {players.map((player) => {
-              return (
-                <li>
-                  <Link to={`/players/${player.id}`}>
-                    {player.firstName} {player.lastName}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </Link>
+        <ul>
+          <h3>Players</h3>
+          {players.map((player) => {
+            return (
+              <li>
+                <Link to={`/players/${player.id}`}>
+                  {player.firstName} {player.lastName}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      // </Link>
     );
   }
   return <h3>Could not find the league of this team!Sorry!</h3>;

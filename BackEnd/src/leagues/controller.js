@@ -21,8 +21,8 @@ const getAllLeagues = async (req, res) => {
         teams: true,
       },
     });
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.json({ data: allLeagues });
+    console.log("allLeagues");
   } catch (error) {
     res.json({ error: error.message });
   }

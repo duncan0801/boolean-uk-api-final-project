@@ -17,6 +17,8 @@ function LeaguesSearch() {
     fetchLeagues();
   }, []);
 
+  console.log(leagues);
+
   if (leagues) {
     return (
       <main>
@@ -34,6 +36,7 @@ function LeaguesSearch() {
                   console.log(league.imageUrl);
                   return (
                     <CardSmall
+                      resource="leagues"
                       id={league.id}
                       imageUrl={league.imageUrl}
                       name={league.name}
