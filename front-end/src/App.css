@@ -46,7 +46,7 @@ main {
   text-align: center;
 }
 
-h3 {
+.loading {
   color: var(--black);
 }
 
