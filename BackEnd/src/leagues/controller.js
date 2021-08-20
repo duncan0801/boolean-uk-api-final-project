@@ -33,6 +33,9 @@ const getLeagueById = async (req, res) => {
   try {
     const oneLeagueById = await league.findUnique({
       where: { id },
+      include: {
+        teams: true,
+      },
     });
     res.json({ data: oneLeagueById });
   } catch (error) {

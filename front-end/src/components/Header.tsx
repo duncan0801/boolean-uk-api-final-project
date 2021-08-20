@@ -4,7 +4,7 @@ function Header() {
   return (
     <>
       <header>
-        <h1>The Footy Oracle</h1>
+        <Link to="/"><h1>The Footy Oracle</h1></Link>
       </header>
       <nav className="top-nav">
         <ul className="tab-list">

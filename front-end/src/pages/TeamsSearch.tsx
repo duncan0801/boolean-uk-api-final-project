@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useStore from "../store";
-import { Grid, FormControl } from "@material-ui/core";
+import { Grid, FormControl, Button } from "@material-ui/core";
 import CardSmall from "../components/CardSmall";
 import SearchBar from "material-ui-search-bar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,24 +26,43 @@ const searchBarStyle = makeStyles({
 
 function ContainerStyled() {
   const teams = useStore((store) => store.teams);
+  const setModal = useStore((store) => store.setModal);
 
   const classes = cardContainerStyle();
 
   return (
-    <Grid container justify="center" spacing={8} className={classes.container}>
-      {teams.map((team) => {
-        return (
-          <Grid item>
-            <CardSmall
-              resource="teams"
-              id={team.id}
-              imageUrl={team.badgeUrl}
-              name={team.name}
-            />
-          </Grid>
-        );
-      })}
-    </Grid>
+    <>
+      <Button
+        style={{
+          height: 50,
+          margin: 10,
+        }}
+        onClick={() => setModal("createTeam")}
+        variant="contained"
+        color="secondary"
+      >
+        Create A Team
+      </Button>
+      <Grid
+        container
+        justify="center"
+        spacing={8}
+        className={classes.container}
+      >
+        {teams.map((team) => {
+          return (
+            <Grid item>
+              <CardSmall
+                resource="teams"
+                id={team.id}
+                imageUrl={team.badgeUrl}
+                name={team.name}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
   );
 }
 

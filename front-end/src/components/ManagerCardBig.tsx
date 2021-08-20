@@ -44,7 +44,7 @@ function ManagerCardBig({
       <h3>
         Current Team:{" "}
         {team ? (
-          <Link to={`http://localhost:3000/teams/${team.id}`}>{team.name}</Link>
+          <Link to={`/teams/${team.id}`}>{team.name}</Link>
         ) : (
           "No team info"
         )}

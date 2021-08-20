@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import useStore from "../store";
-import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Grid,
-} from "@material-ui/core";
+import { FormControl, Grid } from "@material-ui/core";
 import CardSmall from "../components/CardSmall";
 import SearchBar from "material-ui-search-bar";
 import { makeStyles } from "@material-ui/core/styles";

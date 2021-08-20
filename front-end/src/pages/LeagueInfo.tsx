@@ -1,35 +1,59 @@
 import React, { useEffect } from "react";
 import useStore from "../store";
-import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Grid,
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import LeagueCardBig from "../components/LeagueCardBig";
 import { useParams } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
 function LeagueInfo() {
-  const leagues = useStore((store) => store.leagues);
-  const { id }: { id: string } = useParams();
-  const leagueToView = leagues.find((league) => {
-    return league.id === Number(id);
+  const cardContainerStyle = makeStyles({
+    container: {
+      backgroundColor: "#fabc3c",
+      padding: "4rem 0",
+      margin: "0",
+    },
   });
 
-  if (leagueToView) {
+  function ContainerStyled() {
+    const currentLeague = useStore((store) => store.currentLeague);
+
+    const classes = cardContainerStyle();
+
+    return currentLeague ? (
+      <Grid
+        container
+        spacing={6}
+        justify="center"
+        className={classes.container}
+      >
+        <Grid item>
+          <LeagueCardBig
+            id={currentLeague.id}
+            imageUrl={currentLeague.imageUrl}
+            name={currentLeague.name}
+            numberOfTeams={currentLeague.numberOfTeams}
+            country={currentLeague.country}
+            teams={currentLeague.teams}
+          />
+        </Grid>
+      </Grid>
+    ) : (
+      <h3 className="loading">Loading...</h3>
+    );
+  }
+
+  const { id }: { id: string } = useParams();
+  const currentLeague = useStore((store) => store.currentLeague);
+  const fetchLeagueById = useStore((store) => store.fetchLeagueById);
+
+  useEffect(() => {
+    fetchLeagueById(id);
+  }, []);
+
+  if (currentLeague) {
     return (
       <main>
-        <div className="viewSection">
-          <LeagueCardBig
-            id={leagueToView.id}
-            imageUrl={leagueToView.imageUrl}
-            name={leagueToView.name}
-            numberOfTeams={leagueToView.numberOfTeams}
-            country={leagueToView.country}
-            teams={leagueToView.teams}
-          />
-        </div>
+        <ContainerStyled />
       </main>
     );
   }
