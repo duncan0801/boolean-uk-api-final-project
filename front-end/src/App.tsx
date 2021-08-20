@@ -10,15 +10,22 @@ import FixturesSearch from "./pages/FixturesSearch";
 import FixtureInfoPage from "./pages/FixtureInfoPage";
 import ManagersSearchPage from "./pages/ManagersSearchPage";
 import ManagerInfoPage from "./pages/ManagerInfoPage";
+import MainPage from "./pages/MainPage";
 import PlayerInfoPage from "./pages/PlayerInfoPage";
-import ModalContainer from "./modals/ModalContainer";
 
+import ModalContainer from "./modals/ModalContainer";
 
 export default function App() {
   return (
     <>
       <Header />
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/mainpage" />
+        </Route>
+        <Route exact path="/mainpage">
+          <MainPage />
+        </Route>
         <Route exact path="/leagues">
           <LeaguesSearch />
         </Route>
@@ -41,7 +48,7 @@ export default function App() {
           <PlayerSearch />
         </Route>
         <Route exact path="/players/:id">
-          <PlayerInfoPage/>
+          <PlayerInfoPage />
         </Route>
         <Route exact path="/fixtures">
           <FixturesSearch />
