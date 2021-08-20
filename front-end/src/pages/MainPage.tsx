@@ -2,11 +2,12 @@ import React from "react";
 import useStore from "../store";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import "../styles/mainPage.css";
 
 const cardContainerStyle = makeStyles({
   container: {
     backgroundColor: "#fabc3c",
-    padding: "4rem 0",
+    padding: "0",
     margin: "0",
   },
 });
@@ -20,7 +21,8 @@ function ContainerStyled() {
     <Grid container spacing={10} justify="center" className={classes.container}>
       <Grid item>
         <img
-          src="https://www.worcester.gov.uk/images/easyblog_shared/2019/b2ap3_large_Football---carousel.jpg"
+          className="mainMenu-image"
+          src="https://c.tenor.com/rR0kkA0THW8AAAAC/mbapp%C3%A9om-kylian-mbapp%C3%A9.gif"
           alt="Football"
         />
       </Grid>

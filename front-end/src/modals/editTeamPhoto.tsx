@@ -20,23 +20,23 @@ function EditTeamPhoto() {
 
   const history = useHistory();
 
-  function handleSubmit(event: SyntheticEvent) {
+  async function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
 
     const target = event.target as HTMLFormElement;
 
-    // fetch(`http://localhost:4000/teams/${teamId}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ badgeUrl: target.teamUrl.value }),
-    // });
+    await fetch(`http://localhost:4000/teams/${teamId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ badgeUrl: target.teamUrl.value }),
+    });
 
-    consoel.log(target.teamUrl.value);
+    console.log(teamId);
     target.reset();
     setModal("");
-    history.push(`teams/${teamId}`);
+    history.push(`/teams/${teamId}`);
   }
   return (
     <>

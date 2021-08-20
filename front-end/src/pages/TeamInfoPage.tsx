@@ -48,9 +48,10 @@ function ContainerStyled() {
 function TeamInfoPage() {
   const { id }: { id: string } = useParams();
   const fetchTeamById = useStore((store) => store.fetchTeamById);
+  const modal = useStore((store) => store.modal);
   useEffect(() => {
     fetchTeamById(id);
-  }, []);
+  }, [modal]);
 
   return <ContainerStyled />;
 }
