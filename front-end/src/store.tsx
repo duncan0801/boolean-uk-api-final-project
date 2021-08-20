@@ -2,6 +2,8 @@ import { NumberLiteralType } from "typescript";
 import create from "zustand";
 
 type Store = {
+  modal: string;
+  setModal: (modal: string) => void;
   players: Player[];
   teams: Team[];
   managers: Manager[];
@@ -12,7 +14,7 @@ type Store = {
   leaguesSearchString: string;
   searchPlayers: string;
   currentManager: Manager | null;
-  currentPlayer: Player | null
+  currentPlayer: Player | null;
 
   fetchPlayers: () => void;
   fetchPlayerById: (id: string) => void;
@@ -38,7 +40,7 @@ export type Player = {
   position: string;
   imageUrl: string;
   teamId: number;
-  team?: Team
+  team?: Team;
 };
 
 export type Team = {
@@ -84,6 +86,8 @@ export type Fixture = {
 };
 
 const useStore = create<Store>((set, get) => ({
+  modal: "createTeam",
+  setModal: (modal) => set({ modal }),
   players: [],
   teams: [],
   managers: [],
@@ -100,8 +104,8 @@ const useStore = create<Store>((set, get) => ({
   },
   fetchPlayerById(id) {
     fetch(`http://localhost:4000/players/${id}`)
-    .then((resp) => resp.json())
-    .then(selectedPlayer => set({ currentPlayer: selectedPlayer.data }))
+      .then((resp) => resp.json())
+      .then((selectedPlayer) => set({ currentPlayer: selectedPlayer.data }));
   },
   fetchTeams() {
     fetch(`http://localhost:4000/teams`)

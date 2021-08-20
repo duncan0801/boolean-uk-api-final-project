@@ -11,6 +11,7 @@ import FixtureInfoPage from "./pages/FixtureInfoPage";
 import ManagersSearchPage from "./pages/ManagersSearchPage";
 import ManagerInfoPage from "./pages/ManagerInfoPage";
 import PlayerInfoPage from "./pages/PlayerInfoPage";
+import ModalContainer from "./modals/ModalContainer";
 
 
 export default function App() {
@@ -49,6 +50,7 @@ export default function App() {
           <FixtureInfoPage />
         </Route>
       </Switch>
+      <ModalContainer />
     </>
   );
 }

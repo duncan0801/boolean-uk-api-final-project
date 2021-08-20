@@ -1,6 +1,7 @@
 var express = require("express");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var cors = require('cors')
 const fixtureRouter = require("./src/fixtures/routes");
 const leagueRouter = require("./src/leagues/routes");
 const managerRouter = require("./src/managers/routes");
@@ -10,16 +11,17 @@ require("dotenv").config();
 
 var app = express();
 
+app.use(cors())
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000")
-    next()
-})
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  next();
+});
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  req.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   next();
 });
 

@@ -6,6 +6,7 @@ import { Player } from "../store";
 import { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { ButtonGroup } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 type TeamCardProps = {
   id: Number;
@@ -44,6 +45,8 @@ function TeamCard({
 }: TeamCardProps) {
   // const leagues = useStore((store) => store.leagues);
   const teams = useStore((store) => store.teams);
+  const setModal = useStore((store) => store.setModal);
+  const history = useHistory();
   // const managers = useStore((store) => store.managers);
 
   const team = teams.find((team) => {
@@ -97,10 +100,30 @@ function TeamCard({
         </ul>
         <div>
           <ButtonGroup>
-            <Button variant="contained" color="primary">
+            <Button
+              onClick={() => {
+                setModal("edit")
+              }}
+              variant="contained"
+              color="primary"
+            >
               Edit
             </Button>
-            <Button variant="contained" color="secondary">
+            <Button
+              onClick={async () => {
+                const get = await fetch(`http://localhost:4000/teams/${id}`, {
+                  method: "DELETE",
+                  // headers: {
+                  //   "Content-Type": "application/json"
+                  // },
+                  // body: null
+                });
+                // history.push("/teams");
+                console.log(get);
+              }}
+              variant="contained"
+              color="secondary"
+            >
               Delete
             </Button>
           </ButtonGroup>
