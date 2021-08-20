@@ -2,6 +2,7 @@ import useStore from "../store";
 import "../styles/ModalContainer.css";
 import { Button } from "@material-ui/core";
 import CreateTeamModal from "./CreateTeamModal";
+import EditTeamPhoto from "./editTeamPhoto";
 
 function ModalContainer() {
   const modal = useStore((store) => store.modal);
@@ -17,6 +18,7 @@ function ModalContainer() {
           X
         </Button>
         {modal === "createTeam" ? <CreateTeamModal /> : null}
+        {modal === "editTeamPhoto" ? <EditTeamPhoto /> : null}
       </div>
     </div>
   );

@@ -4,7 +4,8 @@ form {
   padding: 20px;
   height: 200px;
 }
-button {
-  width: 50px;
+.button {
+  width: 100px;
   height: 20px;
+  background-color: var(--white);
 }
