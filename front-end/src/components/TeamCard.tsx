@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { Manager } from "../store";
 import { Player } from "../store";
 import { useEffect } from "react";
-import TeamInfoPage from "../pages/TeamInfoPage";
+import { Button } from "@material-ui/core";
+import { ButtonGroup } from "@material-ui/core";
 
 type TeamCardProps = {
   id: Number;
@@ -77,7 +78,7 @@ function TeamCard({
           {manager ? (
             <Link to={`/managers/${manager.id}`}>
               {" "}
-              {`${manager.firstName} ${manager.firstName}`}
+              {`${manager.firstName} ${manager.lastName}`}
             </Link>
           ) : null}
         </h3>
@@ -94,6 +95,16 @@ function TeamCard({
             );
           })}
         </ul>
+        <div>
+          <ButtonGroup>
+            <Button variant="contained" color="primary">
+              Edit
+            </Button>
+            <Button variant="contained" color="secondary">
+              Delete
+            </Button>
+          </ButtonGroup>
+        </div>
       </div>
       // </Link>
     );

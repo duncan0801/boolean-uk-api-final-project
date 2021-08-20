@@ -1,7 +1,8 @@
 import "../styles/playerCard.css";
 import useStore, { Team } from "../store";
 import { Link } from "react-router-dom";
-import { reduceEachLeadingCommentRange } from "typescript";
+import { Button } from "@material-ui/core";
+import { ButtonGroup } from "@material-ui/core";
 
 type FixtureCardProps = {
   id: Number;
@@ -63,8 +64,20 @@ function FixtureCard({
         <h3>Date: {currentFixture.date}</h3>
         <h3>
           Result:
-          {currentFixture.result ? currentFixture.result : null}
+          {currentFixture.result ? (
+            currentFixture.result
+          ) : (
+            <h3>The match will start in 18:00</h3>
+          )}
         </h3>
+        <ButtonGroup>
+          <Button variant="contained" color="primary">
+            Edit
+          </Button>
+          <Button variant="contained" color="secondary">
+            Delete
+          </Button>
+        </ButtonGroup>
       </div>
     );
   }
