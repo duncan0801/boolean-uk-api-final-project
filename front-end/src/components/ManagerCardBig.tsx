@@ -1,6 +1,8 @@
 import "../styles/playerCard.css";
 import { Link } from "react-router-dom";
 import { Team } from "../store";
+import { Button } from "@material-ui/core";
+import { ButtonGroup } from "@material-ui/core";
 
 type ManagersCardBigProps = {
   id: number;
@@ -35,12 +37,17 @@ function ManagerCardBig({
         <img src={imageUrl} alt={firstName + " " + lastName} />
       </div>
       <h2>
-        <span className="firstName">{firstName + ""}</span>
+        <span className="firstName">{firstName + "   "}</span>
         <span className="lstName">{lastName}</span>
       </h2>
       <h3>Age: {age}</h3>
       <h3>
-        Current Team: { team ? <Link to={`http://localhost:3000/teams/${team.id}`}>{team.name}</Link> : "No team info"}
+        Current Team:{" "}
+        {team ? (
+          <Link to={`http://localhost:3000/teams/${team.id}`}>{team.name}</Link>
+        ) : (
+          "No team info"
+        )}
       </h3>
       <h3>
         Previous Teams:
@@ -50,6 +57,14 @@ function ManagerCardBig({
           })}
         </ul>
       </h3>
+      <ButtonGroup>
+        <Button variant="contained" color="primary">
+          Edit
+        </Button>
+        <Button variant="contained" color="secondary">
+          Delete
+        </Button>
+      </ButtonGroup>
     </div>
   );
 }

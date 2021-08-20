@@ -1,6 +1,8 @@
 import "../styles/playerCard.css";
 import { Link } from "react-router-dom";
 import { Team } from "../store";
+import { Button } from "@material-ui/core";
+import { ButtonGroup } from "@material-ui/core";
 
 type LeagueCardBigProps = {
   id: number;
@@ -44,6 +46,14 @@ function LeagueCardBig({
           );
         })}
       </ul>
+      <ButtonGroup>
+        <Button variant="contained" color="primary">
+          Edit
+        </Button>
+        <Button variant="contained" color="secondary">
+          Delete
+        </Button>
+      </ButtonGroup>
     </div>
   );
 }
