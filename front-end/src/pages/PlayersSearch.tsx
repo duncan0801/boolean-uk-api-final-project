@@ -35,6 +35,7 @@ function ContainerStyled() {
               <Grid item>
                 <CardSmall
                   key={`${player.firstName} ${player.lastName}`}
+                  resource="players"
                   id={player.id}
                   imageUrl={player.imageUrl}
                   name={`${player.firstName} ${player.lastName}`}
@@ -74,7 +75,7 @@ function PlayersSearch() {
       </main>
     )
   
-   : <h3>Loading...</h3>
+   : <h3 className="loading">Loading...</h3>
 }
 
 export default PlayersSearch

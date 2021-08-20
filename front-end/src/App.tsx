@@ -10,6 +10,7 @@ import FixturesSearch from "./pages/FixturesSearch";
 import FixtureInfoPage from "./pages/FixtureInfoPage";
 import ManagersSearchPage from "./pages/ManagersSearchPage";
 import ManagerInfoPage from "./pages/ManagerInfoPage";
+import PlayerInfoPage from "./pages/PlayerInfoPage";
 
 
 export default function App() {
@@ -37,6 +38,9 @@ export default function App() {
         </Route>
         <Route exact path="/players">
           <PlayerSearch />
+        </Route>
+        <Route exact path="/players/:id">
+          <PlayerInfoPage/>
         </Route>
         <Route exact path="/fixtures">
           <FixturesSearch />
